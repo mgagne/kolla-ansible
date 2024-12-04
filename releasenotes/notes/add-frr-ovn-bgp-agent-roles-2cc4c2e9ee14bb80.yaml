@@ -1,0 +1,20 @@
+---
+features:
+  - |
+    Adds FRR and ovn-bgp-agent roles
+    |
+    ovn-bgp-agent provides dynamic routing capabilities to OpenStack by
+    allowing the advertising of floating IP addresses and no-nat networks
+    across layer 3 boundaries.
+    !
+    By doing this, OpenStack can now fully own an external network.
+    |
+    Routing of floating IP addresses and no-nat networks is facilitated
+    through FRR, which is also included. FRR allows advertisement of routes
+    learned via ovn-bgp-agent.
+    |
+    To utilize ovn-bgp-agent, the provider bridge (br-ex) will no longer have
+    a physical interface connected to it. This will impact VLAN networks as
+    they rely on layer 2 connectivity provided by the physical switch
+    infrastructure. Additionally, functions like rp_filter must be disabled in
+    order to enable Proxy ARP/NDP abilities.

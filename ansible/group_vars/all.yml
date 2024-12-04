@@ -282,6 +282,7 @@ om_enable_rabbitmq_stream_fanout: true
 ####################
 network_interface: "eth0"
 neutron_external_interface: "eth1"
+neutron_no_external_interface: "{{ enable_ovn_bgp_agent | bool }}"
 kolla_external_vip_interface: "{{ network_interface }}"
 api_interface: "{{ network_interface }}"
 migration_interface: "{{ api_interface }}"
@@ -850,6 +851,7 @@ enable_designate: "no"
 enable_etcd: "no"
 enable_fluentd: "yes"
 enable_fluentd_systemd: "{{ (enable_fluentd | bool) and (enable_central_logging | bool) }}"
+enable_frr: "{{ enable_ovn_bgp_agent | bool }}"
 enable_gnocchi: "no"
 enable_gnocchi_statsd: "no"
 enable_grafana: "no"
@@ -922,6 +924,7 @@ enable_octavia_driver_agent: "{{ enable_octavia | bool and neutron_plugin_agent 
 enable_octavia_jobboard: "{{ enable_octavia | bool and 'amphora' in octavia_provider_drivers }}"
 enable_openvswitch: "{{ enable_neutron | bool and neutron_plugin_agent != 'linuxbridge' }}"
 enable_ovn: "{{ enable_neutron | bool and neutron_plugin_agent == 'ovn' }}"
+enable_ovn_bgp_agent: "no"
 enable_ovn_sb_db_relay: "{{ enable_ovn | bool }}"
 enable_ovs_dpdk: "no"
 enable_osprofiler: "no"
@@ -1195,6 +1198,12 @@ neutron_ovn_availability_zones: []
 
 # Enable OVN agent
 neutron_enable_ovn_agent: "no"
+
+####################
+# ovn-bgp-agent / FRR options
+####################
+ovn_bgp_agent_driver: "nb_ovn_bgp_driver"
+ovn_bgp_agent_exposing_method: "underlay"
 
 #######################
 # Nova options

@@ -50,7 +50,7 @@ function prepare_images {
     fi
 
     if [[ $SCENARIO == "ovn" ]]; then
-        GATE_IMAGES+=",^redis,^octavia,^ovn"
+        GATE_IMAGES+=",^frr,^redis,^octavia,^ovn"
     fi
 
     if [[ $SCENARIO == "mariadb" ]]; then
