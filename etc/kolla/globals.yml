@@ -181,6 +181,17 @@ workaround_ansible_issue_8743: yes
 #enable_neutron_packet_logging: "no"
 
 ####################
+# ovn-bgp-agent / FRR options
+####################
+# We only provide an example here, this should be configured through host based file overrides
+#bgp_loopback_ip: "10.1.2.60"
+#bgp_loopback_interface: "lo"
+#bgp_local_asn: "64999"
+
+#ovn_bgp_agent_driver: "nb_ovn_bgp_driver"
+#ovn_bgp_agent_exposing_method: "underlay"
+
+####################
 # keepalived options
 ####################
 # Arbitrary unique number from 0..255
@@ -353,6 +364,7 @@ workaround_ansible_issue_8743: yes
 #enable_etcd: "no"
 #enable_fluentd: "yes"
 #enable_fluentd_systemd: "{{ (enable_fluentd | bool) and (enable_central_logging | bool) }}"
+#enable_frr: "{{ enable_ovn_bgp_agent | bool }}"
 #enable_gnocchi: "no"
 #enable_gnocchi_statsd: "no"
 #enable_grafana: "no"
@@ -417,6 +429,7 @@ workaround_ansible_issue_8743: yes
 #enable_opensearch_dashboards_external: "{{ enable_opensearch_dashboards | bool }}"
 #enable_openvswitch: "{{ enable_neutron | bool and neutron_plugin_agent != 'linuxbridge' }}"
 #enable_ovn: "{{ enable_neutron | bool and neutron_plugin_agent == 'ovn' }}"
+#enable_ovn_bgp_agent: "no"
 #enable_ovs_dpdk: "no"
 #enable_osprofiler: "no"
 #enable_placement: "{{ enable_nova | bool or enable_zun | bool }}"
