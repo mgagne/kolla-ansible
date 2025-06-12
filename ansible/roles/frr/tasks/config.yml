@@ -68,7 +68,7 @@
     - files:
         - "{{ node_custom_config }}/frr/{{ inventory_hostname }}/daemons"
         - "{{ node_custom_config }}/frr/daemons"
-        - "{{ role_path }}/frr/daemons.j2"
+        - "{{ role_path }}/daemons.j2"
       skip: true
   when:
     - inventory_hostname in groups[service.group]
